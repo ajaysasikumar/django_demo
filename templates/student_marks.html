@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        
+    </style>
+
+</head>
+<body class="acad_body">
+    <nav class="navbar">
+        <ul>     
+            {%if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            
+            {%endif%}
+
+            <li><a href="{% url 'student_marks' user.id %}">Academics</a></li>
+            <li><a href="{% url 'profile' user.id %}">Profile</a></li>
+            <li><a href="{%url 'student_home'%}">Home</a></li>
+        </ul>
+    </nav>
+
+    <h1 style="text-align: center;"> Student Academic Details</h1>
+
+    <div class="acad_div">
+    <div class="acad_info">
+        <form method="post">
+            
+            <label>Student  ID</label><input type="text" id ="stud_inp" name="student_id"  value="{{instance.student_id}}" readonly>
+            
+            <label>Name</label><input type="text" id ="stud_inp" name="name" value="{{instance.name}}" readonly>
+            
+            <label>Class</label><input type="text" id ="stud_inp" name="Class" value="{{instance.Class}}" readonly>
+            <int:pk></int:pk>
+            <div class="Marks">
+             
+                
+                <label>Maths</label><input type="text" id="stud_inp" name="maths" value="{{ marks.maths }}" readonly>
+                <br><br>
+                <label>Physics</label><input type="text" id="stud_inp" name="physics" value="{{ marks.physics }}" readonly>
+                <br><br>          <label>Chemistry</label><input type="text" id="stud_inp" name="chemistry" value="{{ marks.chemistry }}" readonly>
+                <br><br>
+                <label>Computer Science</label><input type="text" id="stud_inp" name="computer_science" value="{{ marks.computer_science }}" readonly>
+                <br><br>
+                <label>English</label><input type="text" id="stud_inp" name="english" value="{{ marks.english }}" readonly>
+                <br><br>
+            
+            </div>
+            
+             
+        </form>
+        
+
+        
+
+    </div>
+
+</div>
+    
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        
+    </style>
+
+</head>
+<body class="student_create">
+
+    <nav class="navbar">
+        <ul>     
+            {%if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            
+            {%endif%}
+
+            <li><a href="{% url 'student_marks' user.id %}">Academics</a></li>
+            <li><a href="{% url 'profile' user.id %}">Profile</a></li>
+            <li><a href="{%url 'student_home'%}">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="student_info">
+    <div class="upload_student_info">
+        <form method="post">
+            {% csrf_token %}
+            <label>Student  ID</label><input type="text" id ="stud_inp" name="student_id"  value="{{instance.student_id}}" readonly>
+            <br><br>
+            <label>Name</label><input type="text" id ="stud_inp" name="name" value="{{instance.name}}" readonly>
+            <br><br>
+            <label>Class</label><input type="text" id ="stud_inp" name="Class" value="{{instance.Class}}" readonly>
+            <br><br>
+            <label>Place</label><input type="text" id ="stud_inp" name="Place" value="{{instance.Place}}" readonly>
+            <br><br>
+            <label>Phone</label><input type="text" id ="stud_inp" name="phone" value="{{instance.phone}}" readonly>
+            <br><br>
+            
+        </form>
+        
+
+        
+
+    </div>
+
+</div>
+    
+</body>
+</html>

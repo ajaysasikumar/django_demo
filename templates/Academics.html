@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        
+    </style>
+
+</head>
+<body class="acad_body">
+    <h1 style="text-align: center;"> Student Academic Details</h1>
+
+    <div class="acad_div">
+    <div class="acad_info">
+        <form method="post">
+            {% csrf_token %}
+            <label>Student  ID</label><input type="text" id ="stud_inp" name="student_id"  value="{{instance.student_id}}">
+            
+            <label>Name</label><input type="text" id ="stud_inp" name="name" value="{{instance.name}}">
+            
+            <label>Class</label><input type="text" id ="stud_inp" name="Class" value="{{instance.Class}}">
+            <int:pk></int:pk>
+            <div class="Marks">
+             
+                
+                <label>Maths</label><input type="text" id="stud_inp" name="maths" value="{{ marks.maths }}">
+                <br><br>
+                <label>Physics</label><input type="text" id="stud_inp" name="physics" value="{{ marks.physics }}">
+                <br><br>          <label>Chemistry</label><input type="text" id="stud_inp" name="chemistry" value="{{ marks.chemistry }}">
+                <br><br>
+                <label>Computer Science</label><input type="text" id="stud_inp" name="computer_science" value="{{ marks.computer_science }}">
+                <br><br>
+                <label>English</label><input type="text" id="stud_inp" name="english" value="{{ marks.english }}">
+                <br><br>
+            
+            </div>
+             <input type="submit" value="Submit" id="acad_but">
+             
+        </form>
+        
+
+        <a href="{% url 'view' %}" class="button-link"><button>View Students</button></a>
+
+    </div>
+
+</div>
+    
+</body>
+</html>
